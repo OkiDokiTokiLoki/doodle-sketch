@@ -1,4 +1,4 @@
-const container = document.querySelector('#container');
+const container = document.querySelector('#grid');
 
 function buildGrid(rows, cols){
     container.style.setProperty('--grid-rows', rows);
@@ -6,9 +6,15 @@ function buildGrid(rows, cols){
 
     for(let i = 0; i < (rows * cols); i++){
         let gridCell = document.createElement('div');
-        // gridCell.innerText = (i + 1);
+        gridCell.addEventListener('mouseover', draw);
         container.appendChild(gridCell).className = 'grid-item';
     };
 };
 
-buildGrid(16, 16);
+function draw(e){
+    e.target.style.background = 'red';
+};
+
+// buildGrid(8, 8);
+ buildGrid(16, 16);
+// buildGrid(64, 64);
