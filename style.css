@@ -13,6 +13,14 @@
     --grid-rows: 1;
 }
 
+.penOn{
+    background-color: palevioletred;
+}
+
+.penOff{
+    background-color: green;
+}
+
 body{
     font-family: 'Poppins', sans-serif;
     display: flex;
