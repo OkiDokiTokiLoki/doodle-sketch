@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 :root{
@@ -14,7 +15,6 @@
 }
 
 body{
-    font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,6 +55,7 @@ h1{
     color: aliceblue;
     border: 2px solid purple;
     border-radius: 15px;
+    font-weight: bold;
 }
 
 #restart:hover{
