@@ -18,12 +18,12 @@
 
     <div class="container">
 
-        <!-- <div class="toolbar">
+        <div class="toolbar">
             <ul>
                 <li class="color">
                     <ul>
                         <li>
-                            penColor
+                            <input type="color" name="penColor" id="penColor" value='#ddd'>
                         </li>
                         <li>
                             warmPalette
@@ -37,30 +37,25 @@
                     </ul>
                 </li>
                 <li>
-                    colorFill
+                    <button id="eraser">eraser</button>
                 </li>
                 <li>
-                    eraser
+                    <button id="addLight">light</button>
                 </li>
                 <li>
-                    addLight
+                    <button id="removeLight">dark</button>
                 </li>
                 <li>
-                    removeLight
+                    <input type="range" id="gridRange" name="gridRange" min="8" max="64">
                 </li>
                 <li>
-                    gridSize
-                </li>
-                <li>
-                    clear
+                    <button id="restart">restart</button>
                 </li>
             </ul>
-        </div> -->
+        </div>
 
         <div id="grid"></div>
     </div>
-
-    <button id="restart">restart</button>
 
 </body>
 </html>

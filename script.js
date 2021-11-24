@@ -1,7 +1,8 @@
 const container = document.querySelector('#grid');
 const restartBtn = document.querySelector('#restart');
+const pen = document.querySelector('#penColor');
 
-let penColor = 'red';
+let penColor = '#000';
 
 function buildGrid(rows, cols){
     container.style.setProperty('--grid-rows', rows);
@@ -15,19 +16,27 @@ function buildGrid(rows, cols){
     };
 };
 
+buildGrid(8, 8);
+// buildGrid(16, 16);
+// buildGrid(64, 64);
+
+// Setting penColor
+pen.addEventListener('input', (e) => {
+    penColor = e.target.value;
+});
+
+// Draw onClick
 function drawClick(e){
-    e.target.style.background = penColor;    
+    e.target.style.backgroundColor = penColor;    
 };
 
+// Draw onHover when mouse is dragged
 function drawDrag(e){
     if (e.buttons > 0){
-        e.target.style.background = penColor;  
+        e.target.style.backgroundColor = penColor;  
     }  
 };
 
-// buildGrid(8, 8);
- buildGrid(16, 16);
-// buildGrid(64, 64);
 
 restartBtn.addEventListener('click', restart)
 
