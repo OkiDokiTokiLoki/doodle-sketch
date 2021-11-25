@@ -1,8 +1,20 @@
 const container = document.querySelector('#grid');
 const restartBtn = document.querySelector('#restart');
 const pen = document.querySelector('#penColor');
+const eraser = document.querySelector('#eraser');
+//const gridSizeDisplay = document.querySelector('#gridSizeDisplay');
+//const gridSize = document.querySelector('#gridSize');
+const gridSmall = document.querySelector('#gridSmall');
+const gridMedium = document.querySelector('#gridMedium');
+const gridLarge = document.querySelector('#gridLarge');
+
+
 
 let penColor = '#000';
+let eraserColor = 'red';
+
+let erasePen;
+
 
 function buildGrid(rows, cols){
     container.style.setProperty('--grid-rows', rows);
@@ -16,27 +28,65 @@ function buildGrid(rows, cols){
     };
 };
 
-buildGrid(8, 8);
+buildGrid(16, 16); // default grid
+
+// gridSmall.addEventListener('click', () => {
+//     buildGrid(8,8);
+
+// });
+
+// gridMedium.addEventListener('click', () => {
+//     buildGrid(16,16);
+
+// });
+
+// gridLarge.addEventListener('click', () => {
+//     buildGrid(32,32);
+
+// });
+
+// buildGrid(8, 8);
 // buildGrid(16, 16);
 // buildGrid(64, 64);
 
-// Setting penColor
+// Set penColor
 pen.addEventListener('input', (e) => {
     penColor = e.target.value;
 });
 
+eraser.addEventListener('toggle', (e) => {
+    // turn eraser on
+    erasePen = true;
+    // turn eraser off
+    erasePen = false;
+});
+
 // Draw onClick
 function drawClick(e){
-    e.target.style.backgroundColor = penColor;    
+    if (erasePen){
+        e.target.style.backgroundColor = eraserColor;
+    }
+    else{
+        e.target.style.backgroundColor = penColor;
+    }
 };
 
 // Draw onHover when mouse is dragged
 function drawDrag(e){
     if (e.buttons > 0){
-        e.target.style.backgroundColor = penColor;  
+        if (erasePen){
+            e.target.style.backgroundColor = eraserColor;
+        }
+        else{
+            e.target.style.backgroundColor = penColor;
+        }  
     }  
 };
 
+// Displays size of grid
+// gridSize.addEventListener('input', (e) => {
+//     gridSizeDisplay.textContent = e.target.value;
+// });
 
 restartBtn.addEventListener('click', restart)
 

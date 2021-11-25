@@ -20,10 +20,10 @@
 
         <div class="toolbar">
             <ul>
-                <li class="color">
-                    <ul>
+                <li>
+                    <ul class="color">
                         <li>
-                            <input type="color" name="penColor" id="penColor" value='#ddd'>
+                            <input type="color" name="penColor" id="penColor">
                         </li>
                         <li>
                             warmPalette
@@ -46,7 +46,21 @@
                     <button id="removeLight">dark</button>
                 </li>
                 <li>
-                    <input type="range" id="gridRange" name="gridRange" min="8" max="64">
+                    <label for="gridRange">size: <span id="gridSizeDisplay"></span></label> <br>
+                    <input type="range" id="gridSize" name="gridSize" min="8" max="64">
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <button id="gridSmall">8x8</button>
+                        </li>
+                        <li>
+                            <button id="gridMedium">16x16</button>
+                        </li>
+                        <li>
+                            <button id="gridLarge">32x32</button>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <button id="restart">restart</button>
