@@ -4,16 +4,15 @@ const pen = document.querySelector('#penColor');
 const eraser = document.querySelector('#eraser');
 //const gridSizeDisplay = document.querySelector('#gridSizeDisplay');
 //const gridSize = document.querySelector('#gridSize');
-const gridSmall = document.querySelector('#gridSmall');
-const gridMedium = document.querySelector('#gridMedium');
-const gridLarge = document.querySelector('#gridLarge');
+// const gridSmall = document.querySelector('#gridSmall');
+// const gridMedium = document.querySelector('#gridMedium');
+// const gridLarge = document.querySelector('#gridLarge');
 
 
 
 let penColor = '#000';
 let eraserColor = 'red';
-
-let erasePen;
+let erasePen = false;
 
 
 function buildGrid(rows, cols){
@@ -28,7 +27,7 @@ function buildGrid(rows, cols){
     };
 };
 
-buildGrid(16, 16); // default grid
+buildGrid(8, 8); // default grid
 
 // gridSmall.addEventListener('click', () => {
 //     buildGrid(8,8);
@@ -54,11 +53,12 @@ pen.addEventListener('input', (e) => {
     penColor = e.target.value;
 });
 
-eraser.addEventListener('toggle', (e) => {
-    // turn eraser on
-    erasePen = true;
-    // turn eraser off
-    erasePen = false;
+eraser.addEventListener('click', () => {
+    if (erasePen === false){
+        erasePen = true;
+    } else {
+        erasePen = false;
+    }
 });
 
 // Draw onClick
