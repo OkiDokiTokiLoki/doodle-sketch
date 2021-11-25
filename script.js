@@ -11,7 +11,6 @@ const eraser = document.querySelector('#eraser');
 
 
 let penColor = '#000';
-let eraserColor = 'red';
 let erasePen = false;
 
 
@@ -54,17 +53,17 @@ pen.addEventListener('input', (e) => {
 });
 
 eraser.addEventListener('click', () => {
-    if (erasePen === false){
-        erasePen = true;
-    } else {
+    if (erasePen){
         erasePen = false;
+    } else{
+        erasePen = true;
     }
 });
 
 // Draw onClick
 function drawClick(e){
     if (erasePen){
-        e.target.style.backgroundColor = eraserColor;
+        e.target.style.backgroundColor = '';
     }
     else{
         e.target.style.backgroundColor = penColor;
@@ -75,7 +74,7 @@ function drawClick(e){
 function drawDrag(e){
     if (e.buttons > 0){
         if (erasePen){
-            e.target.style.backgroundColor = eraserColor;
+            e.target.style.backgroundColor = '';
         }
         else{
             e.target.style.backgroundColor = penColor;
