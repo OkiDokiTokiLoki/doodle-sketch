@@ -4,6 +4,7 @@ const pen = document.querySelector('#penColor');
 const eraser = document.querySelector('#eraser');
 const warmPen = document.querySelector('#warm');
 const coolPen = document.querySelector('#cool');
+const rainbowPen = document.querySelector('#rainbow');
 //const gridSizeDisplay = document.querySelector('#gridSizeDisplay');
 //const gridSize = document.querySelector('#gridSize');
 // const gridSmall = document.querySelector('#gridSmall');
@@ -17,6 +18,7 @@ let penColor = '#000';
 let erasePen = false;
 let warmBool = false;
 let coolBool = false;
+let rainbowBool = false;
 
 
 function buildGrid(rows, cols){
@@ -57,17 +59,11 @@ pen.addEventListener('input', (e) => {
     penColor = e.target.value;
 });
 
-
-// const colors = [ 'blue', 'yellow', 'orange', 'red' ];
-// const randIndex = Math.floor(Math.random() * colors.length);
-
-// console.log(colors[randIndex]);
-
 // const randomWarm = () => {
 //     return Math.floor(Math.random() * warmPalette.length);
 // };
 
-const randomWarm = Math.floor(Math.random() * warmPalette.length);
+// const randomWarm = Math.floor(Math.random() * warmPalette.length);
 
 // const randomCool = () => {
 //     return Math.floor(Math.random() * coolPalette.length);
@@ -81,19 +77,27 @@ const randColor = () =>  {
     return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
 }
 
-warmPen.addEventListener('click', () => {
-    if (warmBool){
-        warmBool = false;
-    } else{
-        warmBool = true;
-    }
-});
+// warmPen.addEventListener('click', () => {
+//     if (warmBool){
+//         warmBool = false;
+//     } else{
+//         warmBool = true;
+//     }
+// });
 
-coolPen.addEventListener('click', () => {
-    if (coolBool){
-        coolBool = false;
+// coolPen.addEventListener('click', () => {
+//     if (coolBool){
+//         coolBool = false;
+//     } else{
+//         coolBool = true;
+//     }
+// });
+
+rainbowPen.addEventListener('click', () => {
+    if (rainbowBool){
+        rainbowBool = false;
     } else{
-        coolBool = true;
+        rainbowBool = true;
     }
 });
 
@@ -110,9 +114,11 @@ eraser.addEventListener('click', () => {
 function drawClick(e){
     if (erasePen){
         e.target.style.backgroundColor = '';
-    } else if (warmBool){
-        e.target.style.backgroundColor = warmPalette[randomWarm];
-    } else if (coolBool){
+    // } else if (warmBool){
+    //     e.target.style.backgroundColor = warmPalette[randomWarm];
+    // } else if (coolBool){
+    //     e.target.style.backgroundColor = randColor();
+    } else if (rainbowBool){
         e.target.style.backgroundColor = randColor();
     }
     else{
@@ -125,9 +131,11 @@ function drawDrag(e){
     if (e.buttons > 0){
         if (erasePen){
             e.target.style.backgroundColor = '';
-        } else if (warmBool){
-            e.target.style.backgroundColor = warmPalette[randomWarm];
-        } else if (coolBool){
+        // } else if (warmBool){
+        //     e.target.style.backgroundColor = warmPalette[randomWarm];
+        // } else if (coolBool){
+        //     e.target.style.backgroundColor = randColor();
+        } else if (rainbowBool){
             e.target.style.backgroundColor = randColor();
         }
         else{
