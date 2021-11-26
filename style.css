@@ -31,7 +31,8 @@ input{
     cursor: pointer;
 }
 
-button:hover{
+button:hover,
+button:active{
     background-color: hsl(208, 100%, 50%);
 }
 
@@ -49,23 +50,24 @@ h1{
     padding: 50px;
 }
 
-.container{
-    display: grid;
-    height: 560px;
-    width: 560px;
-}
-
-.toolbar{
+.toolbar-left{
     position: absolute;
     left: 20%;
 }
 
-input[type="range"] {
-    width:120px;
+.toolbar-right{
+    position: absolute;
+    right: 20%;
 }
+
+/* input[type="range"] {
+    width:120px;
+} */
 
 #grid{
     display: grid;
+    height: 560px;
+    width: 560px;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
 }

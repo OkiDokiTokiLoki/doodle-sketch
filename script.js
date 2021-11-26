@@ -1,28 +1,30 @@
-const container = document.querySelector('#grid');
+const grid = document.querySelector('#grid');
 const restartBtn = document.querySelector('#restart');
 const pen = document.querySelector('#penColor');
 const eraser = document.querySelector('#eraser');
+const warmPen = document.querySelector('#warm');
+const coolPen = document.querySelector('#cool');
 //const gridSizeDisplay = document.querySelector('#gridSizeDisplay');
 //const gridSize = document.querySelector('#gridSize');
 // const gridSmall = document.querySelector('#gridSmall');
 // const gridMedium = document.querySelector('#gridMedium');
 // const gridLarge = document.querySelector('#gridLarge');
 
-
-
 let penColor = '#000';
 let erasePen = false;
+let warmBool = false;
+let coolBool = false;
 
 
 function buildGrid(rows, cols){
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
+    grid.style.setProperty('--grid-rows', rows);
+    grid.style.setProperty('--grid-cols', cols);
 
     for(let i = 0; i < (rows * cols); i++){
         let gridCell = document.createElement('div');
         gridCell.addEventListener('mousedown', drawClick);
         gridCell.addEventListener('mouseenter', drawDrag);
-        container.appendChild(gridCell).className = 'grid-item';
+        grid.appendChild(gridCell).className = 'grid-item';
     };
 };
 
@@ -52,6 +54,28 @@ pen.addEventListener('input', (e) => {
     penColor = e.target.value;
 });
 
+
+const randColor = () =>  {
+    return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+}
+
+warmPen.addEventListener('click', () => {
+    if (warmBool){
+        warmBool = false;
+    } else{
+        warmBool = true;
+    }
+});
+
+coolPen.addEventListener('click', () => {
+    if (coolBool){
+        coolBool = false;
+    } else{
+        coolBool = true;
+    }
+});
+
+// Erase functionality
 eraser.addEventListener('click', () => {
     if (erasePen){
         erasePen = false;
@@ -64,6 +88,10 @@ eraser.addEventListener('click', () => {
 function drawClick(e){
     if (erasePen){
         e.target.style.backgroundColor = '';
+    } else if (warmBool){
+        e.target.style.backgroundColor = randColor();
+    } else if (coolBool){
+        e.target.style.backgroundColor = 'blue';
     }
     else{
         e.target.style.backgroundColor = penColor;
@@ -75,6 +103,10 @@ function drawDrag(e){
     if (e.buttons > 0){
         if (erasePen){
             e.target.style.backgroundColor = '';
+        } else if (warmBool){
+            e.target.style.backgroundColor = randColor();
+        } else if (coolBool){
+            e.target.style.backgroundColor = 'blue';
         }
         else{
             e.target.style.backgroundColor = penColor;
