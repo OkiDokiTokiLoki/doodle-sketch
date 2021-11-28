@@ -15,6 +15,7 @@
 
     --dark: hsl(208, 100%, 5%);
     --light: hsl(208, 100%, 97%);
+    --medium: hsl(208, 100%, 50%);
 }
 
 ul{
@@ -31,9 +32,8 @@ input{
     cursor: pointer;
 }
 
-button:hover,
-button:active{
-    background-color: hsl(208, 100%, 50%);
+button:hover{
+    background-color: var(--medium);
 }
 
 body{
