@@ -30,22 +30,20 @@ function buildGrid(rows, cols){
     };
 };
 
-buildGrid(16, 16); // default grid
+// gridSmall.addEventListener('click', () => {
+//     buildGrid(8,8);
 
-gridSmall.addEventListener('click', () => {
-    buildGrid(8,8);
+// });
 
-});
+// gridMedium.addEventListener('click', () => {
+//     buildGrid(16,16);
 
-gridMedium.addEventListener('click', () => {
-    buildGrid(16,16);
+// });
 
-});
+// gridLarge.addEventListener('click', () => {
+//     buildGrid(32,32);
 
-gridLarge.addEventListener('click', () => {
-    buildGrid(32,32);
-
-});
+// });
 
 // buildGrid(8, 8);
 // buildGrid(16, 16);
@@ -78,13 +76,19 @@ const randomWarm = () => {
 // coolPen functionality
 let coolBool = false;
 
-// coolPen.addEventListener('click', () => {
-//     if (coolBool){
-//         coolBool = false;
-//     } else{
-//         coolBool = true;
-//     }
-// });
+coolPen.addEventListener('click', () => {
+    if (coolBool){
+        coolPen.style.backgroundColor = '';
+        coolBool = false;
+    } else{
+        coolPen.style.backgroundColor = 'var(--medium)';
+        coolBool = true;
+    }
+});
+
+const randomCool = () => {
+    return coolPalette[Math.floor(Math.random() * coolPalette.length)];
+};
 
 // RainbowPen functionality
 let rainbowBool = false;
@@ -122,8 +126,8 @@ function drawClick(e){
         e.target.style.backgroundColor = '';
     } else if (warmBool){
         e.target.style.backgroundColor = randomWarm();
-    // } else if (coolBool){
-    //     e.target.style.backgroundColor = rainbowColor();
+    } else if (coolBool){
+        e.target.style.backgroundColor = randomCool();
     } else if (rainbowBool){
         e.target.style.backgroundColor = rainbowColor();
     }
@@ -139,8 +143,8 @@ function drawDrag(e){
             e.target.style.backgroundColor = '';
         } else if (warmBool){
             e.target.style.backgroundColor = randomWarm();
-        // } else if (coolBool){
-        //     e.target.style.backgroundColor = rainbowColor();
+        } else if (coolBool){
+            e.target.style.backgroundColor = randomCool();
         } else if (rainbowBool){
             e.target.style.backgroundColor = rainbowColor();
         }
@@ -160,3 +164,5 @@ restartBtn.addEventListener('click', restart)
 function restart(){
     window.location.reload();
 }
+
+buildGrid(16, 16); // default grid
