@@ -1,22 +1,13 @@
 const grid = document.querySelector('#grid');
-const restartBtn = document.querySelector('#restart');
 const pen = document.querySelector('#penColor');
 const eraser = document.querySelector('#eraser');
 const warmPen = document.querySelector('#warm');
 const coolPen = document.querySelector('#cool');
 const rainbowPen = document.querySelector('#rainbow');
-
-const buttons = document.querySelectorAll('button');
-
-//const gridSizeDisplay = document.querySelector('#gridSizeDisplay');
-//const gridSize = document.querySelector('#gridSize');
+const restartBtn = document.querySelector('#restart');
 const gridSmall = document.querySelector('#gridSmall');
 const gridMedium = document.querySelector('#gridMedium');
 const gridLarge = document.querySelector('#gridLarge');
-
-const warmPalette = ['#fafa6e', '#e6b54a', '#c17638', '#903f2b', '#570f1c'];
-const coolPalette = ['#56a25a', '#009e87', '#0093c2', '#007fe9', '#5057db'];
-
 
 function buildGrid(rows, cols){
     grid.style.setProperty('--grid-rows', rows);
@@ -30,24 +21,20 @@ function buildGrid(rows, cols){
     };
 };
 
-// gridSmall.addEventListener('click', () => {
-//     buildGrid(8,8);
+gridSmall.addEventListener('click', () => {
+    grid.innerHTML = '';
+    buildGrid(8,8);
+});
 
-// });
+gridMedium.addEventListener('click', () => {
+    grid.innerHTML = '';
+    buildGrid(16,16);
+});
 
-// gridMedium.addEventListener('click', () => {
-//     buildGrid(16,16);
-
-// });
-
-// gridLarge.addEventListener('click', () => {
-//     buildGrid(32,32);
-
-// });
-
-// buildGrid(8, 8);
-// buildGrid(16, 16);
-// buildGrid(64, 64);
+gridLarge.addEventListener('click', () => {
+    grid.innerHTML = '';
+    buildGrid(32,32);
+});
 
 // Set penColor
 let penColor = '#000';
@@ -58,6 +45,7 @@ pen.addEventListener('input', (e) => {
 
 // warmPen functionality
 let warmBool = false;
+const warmPalette = ['#fafa6e', '#e6b54a', '#c17638', '#903f2b', '#570f1c'];
 
 warmPen.addEventListener('click', () => {
     if (warmBool){
@@ -75,6 +63,7 @@ const randomWarm = () => {
 
 // coolPen functionality
 let coolBool = false;
+const coolPalette = ['#56a25a', '#009e87', '#0093c2', '#007fe9', '#5057db'];
 
 coolPen.addEventListener('click', () => {
     if (coolBool){
@@ -154,15 +143,10 @@ function drawDrag(e){
     }  
 };
 
-// Displays size of grid
-// gridSize.addEventListener('input', (e) => {
-//     gridSizeDisplay.textContent = e.target.value;
-// });
-
 restartBtn.addEventListener('click', restart)
 
 function restart(){
-    window.location.reload();
+    location.reload();
 }
 
 buildGrid(16, 16); // default grid
