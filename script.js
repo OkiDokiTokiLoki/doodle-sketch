@@ -52,7 +52,7 @@ warmPen.addEventListener('click', () => {
         warmPen.style.backgroundColor = '';
         warmBool = false;
     } else{
-        warmPen.style.backgroundColor = 'var(--medium)';
+        warmPen.style.backgroundColor = 'var(--accent)';
         warmBool = true;
     }
 });
@@ -63,14 +63,14 @@ const randomWarm = () => {
 
 // coolPen functionality
 let coolBool = false;
-const coolPalette = ['#56a25a', '#009e87', '#0093c2', '#007fe9', '#5057db'];
+const coolPalette = ['#71c7ec', '#1ebbd7', '#189ad3', '#107dac', '#005073'];
 
 coolPen.addEventListener('click', () => {
     if (coolBool){
         coolPen.style.backgroundColor = '';
         coolBool = false;
     } else{
-        coolPen.style.backgroundColor = 'var(--medium)';
+        coolPen.style.backgroundColor = 'var(--accent)';
         coolBool = true;
     }
 });
@@ -87,7 +87,7 @@ rainbowPen.addEventListener('click', () => {
         rainbowPen.style.backgroundColor = '';
         rainbowBool = false;
     } else{
-        rainbowPen.style.backgroundColor = 'var(--medium)';
+        rainbowPen.style.backgroundColor = 'var(--accent)';
         rainbowBool = true;
     }
 });
@@ -104,7 +104,7 @@ eraser.addEventListener('click', () => {
         eraser.style.backgroundColor = '';
         erasePen = false;
     } else{
-        eraser.style.backgroundColor = 'var(--medium)';
+        eraser.style.backgroundColor = 'var(--accent)';
         erasePen = true;
     }
 });

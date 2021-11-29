@@ -13,27 +13,10 @@
     --grid-cols: 1;
     --grid-rows: 1;
 
-    --dark: hsl(208, 100%, 5%);
+    --dark: hsl(210, 75%, 3%);
     --light: hsl(208, 100%, 97%);
-    --medium: hsl(208, 100%, 50%);
-}
-
-ul{
-    list-style: none;
-    padding: 20px 0;
-}
-
-button,
-input{
-    background-color: transparent;
-    border: none;
-    color: var(--light);
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover{
-    background-color: var(--medium);
+    --border: hsl(308, 66%, 31%);
+    --accent: hsl(340, 75%, 50%);
 }
 
 body{
@@ -46,23 +29,37 @@ body{
     height: 95vh;
 }
 
-h1{
-    padding: 50px;
+ul{
+    list-style: none;
 }
 
-.toolbar-left{
+button,
+input{
+    background-color: transparent;
+    margin: 20px;
+    padding: 0 15px;
+    border: 2px solid var(--border);
+    color: var(--light);
+    font-size: 16px;
+    border-radius: 15px;
+    transition: all 115ms ease-in;
+    cursor: pointer;
+}
+
+button:hover,
+input:hover{
+    background-color: var(--border);
+}
+
+input{
+    width: 78px;
+}
+
+.toolbar{
     position: absolute;
     left: 20%;
+    top: 30%;
 }
-
-.toolbar-right{
-    position: absolute;
-    right: 20%;
-}
-
-/* input[type="range"] {
-    width:120px;
-} */
 
 #grid{
     display: grid;
@@ -78,19 +75,47 @@ h1{
     text-align: center;
 }
 
-
-
-
-/* #restart{
-    padding: 5px 15px;
-    background-color: transparent;
-    color: var(--light);
-    border: none;
-    border: 2px solid purple;
-    border-radius: 15px;
-    font-weight: bold;
+#rainbow{
+    animation: color-rotate 300ms;
+    animation-iteration-count: 15;
+    animation-direction: alternate;
 }
 
-#restart:hover{
-    background-color: purple;
-} */
+@keyframes color-rotate{
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+#warm{
+    animation: warm-rotate 300ms;
+    animation-iteration-count: 15;
+    animation-direction: alternate;
+}
+
+@keyframes warm-rotate{
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(100deg);
+    }
+}
+
+#cool{
+    animation: cool-rotate 300ms;
+    animation-iteration-count: 15;
+    animation-direction: alternate;
+}
+
+@keyframes cool-rotate{
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(-50deg);
+    }
+}
