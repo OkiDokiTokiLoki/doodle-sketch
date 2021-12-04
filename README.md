@@ -1,4 +1,4 @@
-## Welcome to Doodle-Sketch
+## Doodle-Sketch
 
 [Live demo](https://okidokitokiloki.github.io/doodle-sketch/)
 
@@ -8,7 +8,7 @@ A take on the classic "Etch-A-Sketch". Create pixel art with the click (or drag)
 ## Technologies
 Utilizing vanilla front end technology and manipulating DOM elements in the browser to create a simple drawing tool. 
 
-This project is created with:
+Project is created with:
 * HTML
 * CSS
 * JavaScript
