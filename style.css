@@ -35,11 +35,18 @@ ul{
     list-style: none;
 }
 
+h1{
+    font-size: 3rem;
+    background: -webkit-linear-gradient(var(--border), var(--accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 button,
 input{
     background-image: var(--gradient);
     margin: 20px;
-    /* padding: 0 20px; */
     border: 2px solid var(--gradient);
     color: var(--light);
     font-size: 16px;
