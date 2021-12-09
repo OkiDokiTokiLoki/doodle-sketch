@@ -9,6 +9,7 @@ const gridSmall = document.querySelector('#gridSmall');
 const gridMedium = document.querySelector('#gridMedium');
 const gridLarge = document.querySelector('#gridLarge');
 
+
 function buildGrid(rows, cols){
     grid.style.setProperty('--grid-rows', rows);
     grid.style.setProperty('--grid-cols', cols);

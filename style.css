@@ -19,7 +19,6 @@
     --accent: hsl(340, 75%, 50%);
 
     --gradient: linear-gradient(to right, var(--border) 0%, var(--accent)  51%, var(--border)  100%);
-    /* --gradient: linear-gradient(to right, #ff00cc 0%, #333399  51%, #ff00cc  100%); */
 }
 
 body{
@@ -40,25 +39,25 @@ button,
 input{
     background-image: var(--gradient);
     margin: 20px;
-    padding: 0 15px;
-    border: 2px solid var(--border);
+    /* padding: 0 20px; */
+    border: 2px solid var(--gradient);
     color: var(--light);
     font-size: 16px;
     border-radius: 15px;
     transition: all 150ms ease-in;
     cursor: pointer;
-
     background-size: 200% auto;        
+    width: 80px;
 }
 
 button:hover,
 input:hover{
-    background-position: right center;
-    background-color: var(--border);
+    background-position: right;
 }
 
 input{
-    width: 78px;
+    width: 83px;
+    height: 23px;
 }
 
 .toolbar{
@@ -85,6 +84,21 @@ input{
     animation: color-rotate 300ms;
     animation-iteration-count: 15;
     animation-direction: alternate;
+}
+
+footer{
+    position: absolute;
+    bottom: 20px;
+}
+
+footer a{
+    text-decoration: none;
+    color: var(--light);
+    transition: all 250ms ease;
+}
+
+footer a:hover{
+    color: var(--accent);
 }
 
 @keyframes color-rotate{
@@ -125,25 +139,3 @@ input{
         filter: hue-rotate(-50deg);
     }
 }
-
-
-/* button,
-input{
-    background-image: linear-gradient(to right, #ff00cc 0%, #333399  51%, #ff00cc  100%);
-    margin: 20px;
-    padding: 0 15px;
-    border: 2px solid var(--border);
-    color: var(--light);
-    font-size: 16px;
-    border-radius: 15px;
-    transition: all 150ms ease-in;
-    cursor: pointer;
-
-    background-size: 200% auto;        
-}
-
-button:hover,
-input:hover{
-    background-position: right center;
-    background-color: var(--border);
-} */
