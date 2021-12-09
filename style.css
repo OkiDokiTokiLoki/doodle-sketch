@@ -17,6 +17,9 @@
     --light: hsl(208, 100%, 97%);
     --border: hsl(308, 66%, 31%);
     --accent: hsl(340, 75%, 50%);
+
+    --gradient: linear-gradient(to right, var(--border) 0%, var(--accent)  51%, var(--border)  100%);
+    /* --gradient: linear-gradient(to right, #ff00cc 0%, #333399  51%, #ff00cc  100%); */
 }
 
 body{
@@ -35,19 +38,22 @@ ul{
 
 button,
 input{
-    background-color: transparent;
+    background-image: var(--gradient);
     margin: 20px;
     padding: 0 15px;
     border: 2px solid var(--border);
     color: var(--light);
     font-size: 16px;
     border-radius: 15px;
-    transition: all 115ms ease-in;
+    transition: all 150ms ease-in;
     cursor: pointer;
+
+    background-size: 200% auto;        
 }
 
 button:hover,
 input:hover{
+    background-position: right center;
     background-color: var(--border);
 }
 
@@ -119,3 +125,25 @@ input{
         filter: hue-rotate(-50deg);
     }
 }
+
+
+/* button,
+input{
+    background-image: linear-gradient(to right, #ff00cc 0%, #333399  51%, #ff00cc  100%);
+    margin: 20px;
+    padding: 0 15px;
+    border: 2px solid var(--border);
+    color: var(--light);
+    font-size: 16px;
+    border-radius: 15px;
+    transition: all 150ms ease-in;
+    cursor: pointer;
+
+    background-size: 200% auto;        
+}
+
+button:hover,
+input:hover{
+    background-position: right center;
+    background-color: var(--border);
+} */
