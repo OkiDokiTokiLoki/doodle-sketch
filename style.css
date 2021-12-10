@@ -13,10 +13,13 @@
     --grid-cols: 1;
     --grid-rows: 1;
 
-    --dark: hsl(210, 75%, 3%);
+    --dark: hsl(206, 74%, 6%);
     --light: hsl(208, 100%, 97%);
-    --border: hsl(308, 66%, 31%);
-    --accent: hsl(340, 75%, 50%);
+    --border: rgb(255, 196, 70);
+    --accent: rgb(240, 74, 114);
+
+    /* --border: hsl(308, 66%, 31%);
+    --accent: hsl(340, 75%, 50%); */
 
     --gradient: linear-gradient(to right, var(--border) 0%, var(--accent)  51%, var(--border)  100%);
 }
@@ -48,7 +51,7 @@ input{
     background-image: var(--gradient);
     margin: 20px;
     border: 2px solid var(--gradient);
-    color: var(--light);
+    color: var(--dark);
     font-size: 16px;
     border-radius: 15px;
     transition: all 150ms ease-in;
@@ -128,7 +131,7 @@ footer a:hover{
         filter: hue-rotate(0deg);
     }
     to {
-        filter: hue-rotate(100deg);
+        filter: hue-rotate(50deg);
     }
 }
 

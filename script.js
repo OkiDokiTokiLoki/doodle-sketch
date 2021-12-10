@@ -51,12 +51,10 @@ const warmPalette = ['#fafa6e', '#e6b54a', '#c17638', '#903f2b', '#570f1c'];
 warmPen.addEventListener('click', () => {
     if (warmBool){
         warmPen.style.backgroundColor = '';
-        warmPen.style.color = 'var(--light)';
         warmPen.style.backgroundImage = 'var(--gradient)';
         warmBool = false;
     } else{
         warmPen.style.backgroundColor = 'var(--light)';
-        warmPen.style.color = 'var(--dark)';
         warmPen.style.backgroundImage = 'none';
         warmBool = true;
     }
@@ -73,12 +71,10 @@ const coolPalette = ['#71c7ec', '#1ebbd7', '#189ad3', '#107dac', '#005073'];
 coolPen.addEventListener('click', () => {
     if (coolBool){
         coolPen.style.backgroundColor = '';
-        coolPen.style.color = 'var(--light)';
         coolPen.style.backgroundImage = 'var(--gradient)';
         coolBool = false;
     } else{
         coolPen.style.backgroundColor = 'var(--light)';
-        coolPen.style.color = 'var(--dark)';
         coolPen.style.backgroundImage = 'none';
         coolBool = true;
     }
@@ -94,12 +90,10 @@ let rainbowBool = false;
 rainbowPen.addEventListener('click', () => {
     if (rainbowBool){
         rainbowPen.style.backgroundColor = '';
-        rainbowPen.style.color = 'var(--light)';
         rainbowPen.style.backgroundImage = 'var(--gradient)';
         rainbowBool = false;
     } else{
         rainbowPen.style.backgroundColor = 'var(--light)';
-        rainbowPen.style.color = 'var(--dark)';
         rainbowPen.style.backgroundImage = 'none';
         rainbowBool = true;
     }
@@ -115,12 +109,10 @@ let erasePen = false;
 eraser.addEventListener('click', () => {
     if (erasePen){
         eraser.style.backgroundColor = '';
-        eraser.style.color = 'var(--light)';
         eraser.style.backgroundImage = 'var(--gradient)';
         erasePen = false;
     } else{
         eraser.style.backgroundColor = 'var(--light)';
-        eraser.style.color = 'var(--dark)';
         eraser.style.backgroundImage = 'none';
         erasePen = true;
     }
