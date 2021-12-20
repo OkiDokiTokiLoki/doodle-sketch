@@ -11,6 +11,8 @@ const gridLarge = document.querySelector('#gridLarge');
 
 
 function buildGrid(rows, cols){
+    grid.innerHTML = '';
+
     grid.style.setProperty('--grid-rows', rows);
     grid.style.setProperty('--grid-cols', cols);
 
@@ -21,21 +23,6 @@ function buildGrid(rows, cols){
         grid.appendChild(gridCell).className = 'grid-item';
     };
 };
-
-gridSmall.addEventListener('click', () => {
-    grid.innerHTML = '';
-    buildGrid(8,8);
-});
-
-gridMedium.addEventListener('click', () => {
-    grid.innerHTML = '';
-    buildGrid(16,16);
-});
-
-gridLarge.addEventListener('click', () => {
-    grid.innerHTML = '';
-    buildGrid(32,32);
-});
 
 // Set penColor
 let penColor = '#000';
