@@ -1,14 +1,10 @@
 const grid = document.querySelector('#grid');
 const pen = document.querySelector('#penColor');
-const eraser = document.querySelector('#eraser');
-const warmPen = document.querySelector('#warm');
-const coolPen = document.querySelector('#cool');
-const rainbowPen = document.querySelector('#rainbow');
+const eraser = document.querySelector('.eraser');
+const warmPen = document.querySelector('.warm');
+const coolPen = document.querySelector('.cool');
+const rainbowPen = document.querySelector('.rainbow');
 const restartBtn = document.querySelector('#restart');
-const gridSmall = document.querySelector('#gridSmall');
-const gridMedium = document.querySelector('#gridMedium');
-const gridLarge = document.querySelector('#gridLarge');
-
 
 function buildGrid(rows, cols){
     grid.innerHTML = '';
@@ -24,6 +20,8 @@ function buildGrid(rows, cols){
     };
 };
 
+buildGrid(16, 16); // default grid
+
 // Set penColor
 let penColor = '#000';
 
@@ -35,7 +33,7 @@ pen.addEventListener('input', (e) => {
 let warmBool = false;
 const warmPalette = ['#fafa6e', '#e6b54a', '#c17638', '#903f2b', '#570f1c'];
 
-warmPen.addEventListener('click', () => {
+function warm(){
     if (warmBool){
         warmPen.style.backgroundColor = '';
         warmPen.style.backgroundImage = 'var(--gradient)';
@@ -45,7 +43,7 @@ warmPen.addEventListener('click', () => {
         warmPen.style.backgroundImage = 'none';
         warmBool = true;
     }
-});
+};
 
 const randomWarm = () => {
     return warmPalette[Math.floor(Math.random() * warmPalette.length)];
@@ -55,7 +53,7 @@ const randomWarm = () => {
 let coolBool = false;
 const coolPalette = ['#71c7ec', '#1ebbd7', '#189ad3', '#107dac', '#005073'];
 
-coolPen.addEventListener('click', () => {
+function cool(){
     if (coolBool){
         coolPen.style.backgroundColor = '';
         coolPen.style.backgroundImage = 'var(--gradient)';
@@ -65,7 +63,7 @@ coolPen.addEventListener('click', () => {
         coolPen.style.backgroundImage = 'none';
         coolBool = true;
     }
-});
+};
 
 const randomCool = () => {
     return coolPalette[Math.floor(Math.random() * coolPalette.length)];
@@ -74,7 +72,7 @@ const randomCool = () => {
 // RainbowPen functionality
 let rainbowBool = false;
 
-rainbowPen.addEventListener('click', () => {
+function rainbow(){
     if (rainbowBool){
         rainbowPen.style.backgroundColor = '';
         rainbowPen.style.backgroundImage = 'var(--gradient)';
@@ -84,7 +82,7 @@ rainbowPen.addEventListener('click', () => {
         rainbowPen.style.backgroundImage = 'none';
         rainbowBool = true;
     }
-});
+};
 
 const rainbowColor = () =>  {
     return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
@@ -93,7 +91,7 @@ const rainbowColor = () =>  {
 // Erase functionality
 let erasePen = false;
 
-eraser.addEventListener('click', () => {
+function erase(){
     if (erasePen){
         eraser.style.backgroundColor = '';
         eraser.style.backgroundImage = 'var(--gradient)';
@@ -103,7 +101,7 @@ eraser.addEventListener('click', () => {
         eraser.style.backgroundImage = 'none';
         erasePen = true;
     }
-});
+};
 
 // Draw onClick
 function drawClick(e){
@@ -121,7 +119,7 @@ function drawClick(e){
     }
 };
 
-// Draw onHover when mouse is dragged
+// Draw onHover (when mouse is dragged)
 function drawDrag(e){
     if (e.buttons > 0){
         if (erasePen){
@@ -144,5 +142,3 @@ restartBtn.addEventListener('click', restart)
 function restart(){
     location.reload();
 }
-
-buildGrid(16, 16); // default grid

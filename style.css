@@ -90,7 +90,7 @@ input{
     text-align: center;
 }
 
-#rainbow{
+.rainbow{
     animation: color-rotate 300ms;
     animation-iteration-count: 15;
     animation-direction: alternate;
@@ -120,7 +120,7 @@ footer a:hover{
     }
 }
 
-#warm{
+.warm{
     animation: warm-rotate 300ms;
     animation-iteration-count: 15;
     animation-direction: alternate;
@@ -135,7 +135,7 @@ footer a:hover{
     }
 }
 
-#cool{
+.cool{
     animation: cool-rotate 300ms;
     animation-iteration-count: 15;
     animation-direction: alternate;

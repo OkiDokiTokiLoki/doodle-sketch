@@ -23,14 +23,14 @@
         <ul>
             <li>
                 <input type="color" name="penColor" id="penColor">
-                <button id="rainbow">rainbow</button>
+                <button class="rainbow" onclick="rainbow()">rainbow</button>
             </li>
             <li>
-                <button id="warm">warm</button>
-                <button id="cool">cool</button>
+                <button class="warm" onclick="warm()">warm</button>
+                <button class="cool" onclick="cool()">cool</button>
             </li>
             <li>
-                <button id="eraser">eraser</button>
+                <button class="eraser" onclick="erase()">eraser</button>
             </li>
         </ul>
     </div>
@@ -38,9 +38,9 @@
     <div id="grid"></div>
 
     <div class="gridSize">
-        <button id="gridSmall" onclick="buildGrid(8,8)">8x8</button>
-        <button id="gridMedium" onclick="buildGrid(16,16)">16x16</button>
-        <button id="gridLarge" onclick="buildGrid(32,32)">32x32</button>
+        <button onclick="buildGrid(8,8)">8x8</button>
+        <button onclick="buildGrid(16,16)">16x16</button>
+        <button onclick="buildGrid(32,32)">32x32</button>
     </div>
 
     <footer><a href="https://github.com/OkiDokiTokiLoki">OkiDokiTokiLoki</a> &#169; 2021</footer>
