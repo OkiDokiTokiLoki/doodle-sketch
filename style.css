@@ -70,12 +70,6 @@ input{
     height: 23px;
 }
 
-.toolbar{
-    position: absolute;
-    left: 20%;
-    top: 30%;
-}
-
 #grid{
     display: grid;
     height: 560px;
