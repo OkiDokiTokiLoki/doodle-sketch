@@ -15,11 +15,8 @@
 
     --dark: hsl(206, 74%, 6%);
     --light: hsl(208, 100%, 97%);
-    --border: rgb(255, 196, 70);
-    --accent: rgb(240, 74, 114);
-
-    /* --border: hsl(308, 66%, 31%);
-    --accent: hsl(340, 75%, 50%); */
+    --border: hsl(41, 100%, 64%);
+    --accent: hsl(346, 85%, 62%);
 
     --gradient: linear-gradient(to right, var(--border) 0%, var(--accent)  51%, var(--border)  100%);
 }
@@ -170,23 +167,14 @@ footer a:hover{
     }
 }
 
-@media screen and (min-width: 451px) and (max-width: 650px) {
+@media screen and (min-width: 451px) and (max-width: 768px) {
     body {
-      background-color: lightgreen;
-    }
-
-    h1{
-        font-size: 2rem;
-    }
-
-    .toolbar{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      height: 100%;
     }
 
     #grid{
-        height: 400px;
         width: 400px;
+        height: 400px;
+        margin: 40px 0;
     }
 }
