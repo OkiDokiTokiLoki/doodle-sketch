@@ -31,7 +31,7 @@ body{
     align-items: center;
     background-color: var(--dark);
     color: var(--light);
-    height: 95vh;
+    height: 100%;
 }
 
 ul{
@@ -143,3 +143,51 @@ footer a:hover{
         filter: hue-rotate(-50deg);
     }
 }
+
+@media screen and (max-width: 450px) {
+    body {
+        display: grid;
+        place-items: center;
+    }
+
+    h1{
+        font-size: 1.5rem;
+    }
+
+    button,
+    input{
+        margin: 5px;
+    }
+
+    .toolbar{
+        margin-top: 100px;
+        display: flex;
+        width: 352px;
+    }
+
+    #grid{
+        height: 352px;
+        width: 352px;
+    }
+  }
+
+@media screen and (min-width: 451px) and (max-width: 650px) {
+    body {
+      background-color: lightgreen;
+    }
+
+    h1{
+        font-size: 2rem;
+    }
+
+    .toolbar{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #grid{
+        height: 400px;
+        width: 400px;
+    }
+  }
