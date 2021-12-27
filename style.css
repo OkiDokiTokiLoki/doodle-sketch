@@ -166,3 +166,21 @@ footer a:hover{
     }
 }
 
+@media screen and (min-width: 451px) and (max-width: 768px) {
+    body {
+      height: 100%;
+    }
+
+    .toolbar{
+        width: 400px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #grid{
+        width: 400px;
+        height: 400px;
+        margin: 20px 0;
+    }
+}
