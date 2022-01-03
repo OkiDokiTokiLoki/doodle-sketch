@@ -1,5 +1,3 @@
-const grid = document.querySelector('#grid');
-const pen = document.querySelector('#penColor');
 const eraser = document.querySelector('.eraser');
 const warmPen = document.querySelector('.warm');
 const coolPen = document.querySelector('.cool');
@@ -7,6 +5,8 @@ const rainbowPen = document.querySelector('.rainbow');
 const restartBtn = document.querySelector('#restart');
 
 function buildGrid(rows, cols){
+    const grid = document.querySelector('#grid');
+
     grid.innerHTML = '';
 
     grid.style.setProperty('--grid-rows', rows);
@@ -24,6 +24,8 @@ buildGrid(16, 16); // default grid
 
 // Set penColor
 let penColor = '#000';
+
+const pen = document.querySelector('#penColor');
 
 pen.addEventListener('input', (e) => {
     penColor = e.target.value;
