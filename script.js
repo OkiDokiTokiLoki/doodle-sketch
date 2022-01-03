@@ -1,8 +1,15 @@
+const pen = document.querySelector('#penColor');
 const eraser = document.querySelector('.eraser');
-const warmPen = document.querySelector('.warm');
-const coolPen = document.querySelector('.cool');
-const rainbowPen = document.querySelector('.rainbow');
 const restartBtn = document.querySelector('#restart');
+
+const warmPalette = ['#fafa6e', '#e6b54a', '#c17638', '#903f2b', '#570f1c'];
+const coolPalette = ['#71c7ec', '#1ebbd7', '#189ad3', '#107dac', '#005073'];
+
+let penColor = '#000';
+let erasePen = false;
+let warmBool = false;
+let coolBool = false;
+let rainbowBool = false;
 
 function buildGrid(rows, cols){
     const grid = document.querySelector('#grid');
@@ -23,19 +30,14 @@ function buildGrid(rows, cols){
 buildGrid(16, 16); // default grid
 
 // Set penColor
-let penColor = '#000';
-
-const pen = document.querySelector('#penColor');
-
 pen.addEventListener('input', (e) => {
     penColor = e.target.value;
 });
 
 // warmPen functionality
-let warmBool = false;
-const warmPalette = ['#fafa6e', '#e6b54a', '#c17638', '#903f2b', '#570f1c'];
-
 function warm(){
+    const warmPen = document.querySelector('.warm');
+
     if (warmBool){
         warmPen.style.backgroundColor = '';
         warmPen.style.backgroundImage = 'var(--gradient)';
@@ -52,10 +54,9 @@ const randomWarm = () => {
 };
 
 // coolPen functionality
-let coolBool = false;
-const coolPalette = ['#71c7ec', '#1ebbd7', '#189ad3', '#107dac', '#005073'];
-
 function cool(){
+    const coolPen = document.querySelector('.cool');
+
     if (coolBool){
         coolPen.style.backgroundColor = '';
         coolPen.style.backgroundImage = 'var(--gradient)';
@@ -72,9 +73,9 @@ const randomCool = () => {
 };
 
 // RainbowPen functionality
-let rainbowBool = false;
-
 function rainbow(){
+    const rainbowPen = document.querySelector('.rainbow');
+
     if (rainbowBool){
         rainbowPen.style.backgroundColor = '';
         rainbowPen.style.backgroundImage = 'var(--gradient)';
@@ -91,8 +92,6 @@ const rainbowColor = () =>  {
 }
 
 // Erase functionality
-let erasePen = false;
-
 function erase(){
     if (erasePen){
         eraser.style.backgroundColor = '';
