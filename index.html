@@ -20,11 +20,11 @@
     <button id="restart">restart</button>
 
     <div class="toolbar">
-        <input type="color" name="penColor" id="penColor">
-        <button class="rainbow" onclick="rainbow()">rainbow</button>
-        <button class="warm" onclick="warm()">warm</button>
-        <button class="cool" onclick="cool()">cool</button>
-        <button class="eraser" onclick="erase()">eraser</button>
+        <input type="color" name="penColor" id="penColor" onclick="setPenColor('penColor')">
+        <button class="rainbow" onclick="setPenColor('rainbow')">rainbow</button>
+        <button class="warm" onclick="setPenColor('warm')">warm</button>
+        <button class="cool" onclick="setPenColor('cool')">cool</button>
+        <button class="eraser" onclick="setPenColor('eraser')">eraser</button>
     </div>
 
     <div id="grid"></div>

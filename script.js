@@ -1,145 +1,109 @@
-const pen = document.querySelector('#penColor');
-const eraser = document.querySelector('.eraser');
-const restartBtn = document.querySelector('#restart');
-
-const warmPalette = ['#fafa6e', '#e6b54a', '#c17638', '#903f2b', '#570f1c'];
-const coolPalette = ['#71c7ec', '#1ebbd7', '#189ad3', '#107dac', '#005073'];
-
-let penColor = '#000';
-let erasePen = false;
-let warmBool = false;
-let coolBool = false;
-let rainbowBool = false;
-
-function buildGrid(rows, cols){
-    const grid = document.querySelector('#grid');
-
-    grid.innerHTML = '';
-
-    grid.style.setProperty('--grid-rows', rows);
-    grid.style.setProperty('--grid-cols', cols);
-
-    for(let i = 0; i < (rows * cols); i++){
-        let gridCell = document.createElement('div');
-        gridCell.addEventListener('mousedown', drawClick);
-        gridCell.addEventListener('mouseenter', drawDrag);
-        grid.appendChild(gridCell).className = 'grid-item';
-    };
+const penOptions = {
+    penColor: '#000',
+    erasePen: false,
+    currentMode: null,
+    warmPalette: ['#fafa6e', '#e6b54a', '#c17638', '#903f2b', '#570f1c'],
+    coolPalette: ['#71c7ec', '#1ebbd7', '#189ad3', '#107dac', '#005073'],
 };
 
-buildGrid(16, 16); // default grid
+const penElements = {
+    pen: document.querySelector('#penColor'),
+    eraser: document.querySelector('.eraser'),
+    restartBtn: document.querySelector('#restart'),
+    grid: document.querySelector('#grid'),
+    warm: document.querySelector('.warm'),
+    cool: document.querySelector('.cool'),
+    rainbow: document.querySelector('.rainbow'),
+};
 
-// Set penColor
-pen.addEventListener('input', (e) => {
-    penColor = e.target.value;
+function setPenStyle(penElement, bool, colorArray) {
+    if (bool) {
+        penElement.style.backgroundColor = '';
+        penElement.style.backgroundImage = 'var(--gradient)';
+    } else {
+        penElement.style.backgroundColor = 'var(--light)';
+        // penElement.style.backgroundImage = 'none';
+        if (colorArray) {
+            penOptions.penColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+        }
+    }
+    return !bool;
+}
+
+function setPenColor(mode) {
+    penOptions.currentMode = mode;
+
+    if (mode === 'eraser') {
+        penOptions.erasePen = setPenStyle(penElements.eraser, penOptions.erasePen);
+    } else if (mode === 'penColor') {
+        penOptions.erasePen = false;
+        setPenStyle(penElements.eraser, false);
+        penElements.pen.click();
+    } else {
+        penOptions.erasePen = false;
+        penOptions.warmBool = false;
+        penOptions.coolBool = false;
+        penOptions.rainbowBool = false;
+        setPenStyle(penElements.eraser, false);
+        switch (mode) {
+            case 'warm':
+                penOptions.warmBool = setPenStyle(penElements.warm, penOptions.warmBool, penOptions.warmPalette);
+                break;
+            case 'cool':
+                penOptions.coolBool = setPenStyle(penElements.cool, penOptions.coolBool, penOptions.coolPalette);
+                break;
+            case 'rainbow':
+                penOptions.rainbowBool = setPenStyle(penElements.rainbow, penOptions.rainbowBool);
+                break;
+            default:
+                penElements.pen.value = penOptions.penColor;
+        }
+    }
+}
+
+function buildGrid(rows, cols) {
+    penElements.grid.innerHTML = '';
+    penElements.grid.style.setProperty('--grid-rows', rows);
+    penElements.grid.style.setProperty('--grid-cols', cols);
+
+    for (let i = 0; i < (rows * cols); i++) {
+        const gridCell = document.createElement('div');
+        gridCell.addEventListener('mousedown', drawClick);
+        gridCell.addEventListener('mousemove', drawDrag);
+        penElements.grid.appendChild(gridCell).className = 'grid-item';
+    }
+}
+
+function drawClick(e) {
+    const { erasePen, penColor } = penOptions;
+
+    if (erasePen) {
+        e.target.style.backgroundColor = '';
+    } else if (penOptions.penColor && penOptions.currentMode === 'penColor') {
+        e.target.style.backgroundColor = penOptions.penColor;
+    } else if (penOptions.currentMode === 'warm') {
+        e.target.style.backgroundColor = penOptions.warmPalette[Math.floor(Math.random() * penOptions.warmPalette.length)];
+    } else if (penOptions.currentMode === 'cool') {
+        e.target.style.backgroundColor = penOptions.coolPalette[Math.floor(Math.random() * penOptions.coolPalette.length)];
+    } else if (penOptions.currentMode === 'rainbow') {
+        e.target.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0').toUpperCase();
+    }
+}
+
+function drawDrag(e) {
+    if (e.buttons > 0) {
+        drawClick(e);
+    }
+}
+
+penElements.pen.addEventListener('input', (e) => {
+    penOptions.penColor = e.target.value;
 });
 
-// warmPen functionality
-function warm(){
-    const warmPen = document.querySelector('.warm');
+penElements.restartBtn.addEventListener('click', restart);
 
-    if (warmBool){
-        warmPen.style.backgroundColor = '';
-        warmPen.style.backgroundImage = 'var(--gradient)';
-        warmBool = false;
-    } else{
-        warmPen.style.backgroundColor = 'var(--light)';
-        warmPen.style.backgroundImage = 'none';
-        warmBool = true;
-    }
-};
-
-const randomWarm = () => {
-    return warmPalette[Math.floor(Math.random() * warmPalette.length)];
-};
-
-// coolPen functionality
-function cool(){
-    const coolPen = document.querySelector('.cool');
-
-    if (coolBool){
-        coolPen.style.backgroundColor = '';
-        coolPen.style.backgroundImage = 'var(--gradient)';
-        coolBool = false;
-    } else{
-        coolPen.style.backgroundColor = 'var(--light)';
-        coolPen.style.backgroundImage = 'none';
-        coolBool = true;
-    }
-};
-
-const randomCool = () => {
-    return coolPalette[Math.floor(Math.random() * coolPalette.length)];
-};
-
-// RainbowPen functionality
-function rainbow(){
-    const rainbowPen = document.querySelector('.rainbow');
-
-    if (rainbowBool){
-        rainbowPen.style.backgroundColor = '';
-        rainbowPen.style.backgroundImage = 'var(--gradient)';
-        rainbowBool = false;
-    } else{
-        rainbowPen.style.backgroundColor = 'var(--light)';
-        rainbowPen.style.backgroundImage = 'none';
-        rainbowBool = true;
-    }
-};
-
-const rainbowColor = () =>  {
-    return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+function restart() {
+    buildGrid(16, 16);
 }
 
-// Erase functionality
-function erase(){
-    if (erasePen){
-        eraser.style.backgroundColor = '';
-        eraser.style.backgroundImage = 'var(--gradient)';
-        erasePen = false;
-    } else{
-        eraser.style.backgroundColor = 'var(--light)';
-        eraser.style.backgroundImage = 'none';
-        erasePen = true;
-    }
-};
-
-// Draw onClick
-function drawClick(e){
-    if (erasePen){
-        e.target.style.backgroundColor = '';
-    } else if (warmBool){
-        e.target.style.backgroundColor = randomWarm();
-    } else if (coolBool){
-        e.target.style.backgroundColor = randomCool();
-    } else if (rainbowBool){
-        e.target.style.backgroundColor = rainbowColor();
-    }
-    else{
-        e.target.style.backgroundColor = penColor;
-    }
-};
-
-// Draw onHover (when mouse is dragged)
-function drawDrag(e){
-    if (e.buttons > 0){
-        if (erasePen){
-            e.target.style.backgroundColor = '';
-        } else if (warmBool){
-            e.target.style.backgroundColor = randomWarm();
-        } else if (coolBool){
-            e.target.style.backgroundColor = randomCool();
-        } else if (rainbowBool){
-            e.target.style.backgroundColor = rainbowColor();
-        }
-        else{
-            e.target.style.backgroundColor = penColor;
-        }  
-    }  
-};
-
-restartBtn.addEventListener('click', restart)
-
-function restart(){
-    location.reload();
-}
+buildGrid(16, 16);
