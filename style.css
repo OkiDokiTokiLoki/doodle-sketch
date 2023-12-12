@@ -2,14 +2,14 @@
 
 *,
 *::before,
-*::after{
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-:root{
+:root {
     --grid-cols: 1;
     --grid-rows: 1;
 
@@ -21,32 +21,33 @@
     --gradient: linear-gradient(to right, var(--border) 0%, var(--accent)  51%, var(--border)  100%);
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: var(--dark);
     color: var(--light);
-    height: 100%;
+    height: 90vh;
 }
 
-ul{
+ul {
     list-style: none;
 }
 
-h1{
+h1 {
     font-size: 3rem;
     background: -webkit-linear-gradient(var(--border), var(--accent));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin: 50px 0 30px 0;
 }
 
 button,
-input{
+input {
     background-image: var(--gradient);
-    margin: 20px;
+    margin: 10px 5px;
     border: 2px solid var(--gradient);
     color: var(--dark);
     font-size: 16px;
@@ -58,47 +59,54 @@ input{
 }
 
 button:hover,
-input:hover{
+input:hover {
     background-position: right;
 }
 
-input{
+input {
     width: 83px;
     height: 23px;
 }
 
-#grid{
+.toolbar {
+    margin-top: 20px;
+    display: flex;
+    width: 352px;
+}
+
+#grid {
     display: grid;
-    height: 560px;
-    width: 560px;
+    margin: 20px 0;
+    height: 352px;
+    width: 352px;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
 }
 
-.grid-item{
+.grid-item {
     background-color: var(--light);
     border: 1px solid var(--dark);
     text-align: center;
 }
 
-.rainbow{
+.rainbow {
     animation: color-rotate 300ms;
     animation-iteration-count: 15;
     animation-direction: alternate;
 }
 
-footer{
+footer {
     position: absolute;
     bottom: 20px;
 }
 
-footer a{
+footer a {
     text-decoration: none;
     color: var(--light);
     transition: all 250ms ease;
 }
 
-footer a:hover{
+footer a:hover {
     color: var(--accent);
 }
 
@@ -111,7 +119,7 @@ footer a:hover{
     }
 }
 
-.warm{
+.warm {
     animation: warm-rotate 300ms;
     animation-iteration-count: 15;
     animation-direction: alternate;
@@ -126,7 +134,7 @@ footer a:hover{
     }
 }
 
-.cool{
+.cool {
     animation: cool-rotate 300ms;
     animation-iteration-count: 15;
     animation-direction: alternate;
@@ -141,46 +149,30 @@ footer a:hover{
     }
 }
 
-@media screen and (max-width: 450px) {
-
-    h1{
-        margin: 50px 0 30px 0;
-    }
-
-    button,
-    input{
-        margin: 10px 5px;
-        padding: 0 3px;
-    }
-
-    .toolbar{
-        margin-top: 20px;
-        display: flex;
-        width: 352px;
-    }
-
-    #grid{
-        margin: 20px 0;
-        height: 352px;
-        width: 352px;
-    }
-}
-
-@media screen and (min-width: 451px) and (max-width: 768px) {
-    body {
-      height: 100%;
-    }
-
-    .toolbar{
-        width: 400px;
+@media screen and (min-width: 768px) {
+    .toolbar {
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    #grid{
+    #grid {
         width: 400px;
         height: 400px;
         margin: 20px 0;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    button,
+    input {
+        margin: 20px;
+        padding: 0;
+    }
+
+    #grid {
+        height: 560px;
+        width: 560px;
     }
 }
