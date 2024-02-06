@@ -1,34 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
-
 *,
 *::before,
 *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', Verdana, sans-serif;
 }
 
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
-
     --dark: hsl(206, 74%, 6%);
     --light: hsl(208, 100%, 97%);
-    --border: hsl(41, 100%, 64%);
-    --accent: hsl(346, 85%, 62%);
-
-    --gradient: linear-gradient(to right, var(--border) 0%, var(--accent)  51%, var(--border)  100%);
+    --yellow: hsl(41, 100%, 64%);
+    --pink: hsl(346, 85%, 62%);
+    --gradient: linear-gradient(to right, var(--yellow) 0%, var(--yellow)  100%);
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--dark);
-    color: var(--light);
     height: 90vh;
+    color: var(--light);
+    background-color: var(--dark);
+    text-align: center;
 }
 
 ul {
@@ -37,25 +30,25 @@ ul {
 
 h1 {
     font-size: 3rem;
-    background: -webkit-linear-gradient(var(--border), var(--accent));
+    background: -webkit-linear-gradient(var(--yellow), var(--pink));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin: 50px 0 30px 0;
+    margin: 30px 0;
 }
 
 button,
 input {
-    background-image: var(--gradient);
     margin: 10px 5px;
-    border: 2px solid var(--gradient);
-    color: var(--dark);
     font-size: 16px;
     border-radius: 15px;
     transition: all 150ms ease-in;
     cursor: pointer;
-    background-size: 200% auto;        
     width: 80px;
+    background-image: var(--gradient);
+    border: 2px solid var(--gradient);
+    color: var(--dark);
+    font-weight: 600;
 }
 
 button:hover,
@@ -71,33 +64,44 @@ input {
 .toolbar {
     margin-top: 20px;
     display: flex;
-    width: 352px;
+    width: 100%;
 }
 
 #grid {
     display: grid;
-    margin: 20px 0;
-    height: 352px;
+    grid-template-rows: repeat(var(--grid-rows), minmax(0, 1fr));
+    grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+    margin-inline: auto;
     width: 352px;
-    grid-template-rows: repeat(var(--grid-rows), 1fr);
-    grid-template-columns: repeat(var(--grid-cols), 1fr);
 }
 
 .grid-item {
     background-color: var(--light);
     border: 1px solid var(--dark);
-    text-align: center;
+    aspect-ratio: 1;
 }
 
-.rainbow {
+.rainbow,
+.warm,
+.cool {
     animation: color-rotate 300ms;
-    animation-iteration-count: 15;
-    animation-direction: alternate;
+    animation-iteration-count: 5;
 }
 
-footer {
-    position: absolute;
-    bottom: 20px;
+@keyframes color-rotate {
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+button.active-pen,
+input.active-pen {
+    background-image: linear-gradient(to right, var(--pink) 0%, var(--pink)  100%);
+    color: var(--light);
+    font-weight: 600;
 }
 
 footer a {
@@ -107,72 +111,28 @@ footer a {
 }
 
 footer a:hover {
-    color: var(--accent);
-}
-
-@keyframes color-rotate{
-    from {
-        filter: hue-rotate(0deg);
-    }
-    to {
-        filter: hue-rotate(360deg);
-    }
-}
-
-.warm {
-    animation: warm-rotate 300ms;
-    animation-iteration-count: 15;
-    animation-direction: alternate;
-}
-
-@keyframes warm-rotate{
-    from {
-        filter: hue-rotate(0deg);
-    }
-    to {
-        filter: hue-rotate(50deg);
-    }
-}
-
-.cool {
-    animation: cool-rotate 300ms;
-    animation-iteration-count: 15;
-    animation-direction: alternate;
-}
-
-@keyframes cool-rotate{
-    from {
-        filter: hue-rotate(0deg);
-    }
-    to {
-        filter: hue-rotate(-50deg);
-    }
+    color: var(--pink);
 }
 
 @media screen and (min-width: 768px) {
     .toolbar {
-        width: 100%;
-        display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
 
     #grid {
         width: 400px;
-        height: 400px;
-        margin: 20px 0;
     }
 }
 
 @media screen and (min-width: 1024px) {
-    button,
+    button:not(#restart),
     input {
         margin: 20px;
         padding: 0;
     }
 
     #grid {
-        height: 560px;
         width: 560px;
     }
 }

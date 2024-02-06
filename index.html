@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="icon" type="image/x-icon" href="./fav.ico">
-        <link rel="stylesheet" href="./style.css">
-        <script src="./script.js" defer></script>
+		<title>doodle sketch</title>
 
-        <title>doodle sketch</title>
-    </head>
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" as="style" crossorigin="anonymous" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet" />
+		<link rel="icon" type="image/x-icon" href="./fav.ico" />
+		<link rel="stylesheet" href="./style.min.css" />
 
-    <body>
-        <header>
-            <h1>doodle sketch</h1>
-        </header>
+		<script src="./dist/script.js" defer></script>
+	</head>
 
-        <button id="restart">restart</button>
+	<body>
+		<h1>doodle sketch</h1>
 
-        <div class="toolbar">
-            <input type="color" name="penColor" id="penColor" onclick="setPenColor('penColor')">
-            <button class="rainbow" onclick="setPenColor('rainbow')">rainbow</button>
-            <button class="warm" onclick="setPenColor('warm')">warm</button>
-            <button class="cool" onclick="setPenColor('cool')">cool</button>
-            <button class="eraser" onclick="setPenColor('eraser')">eraser</button>
-        </div>
+		<button id="restart">restart</button>
 
-        <div id="grid"></div>
+		<div class="toolbar">
+			<input type="color" name="penColor" id="penColor" onclick="setPenColor('penColor')" />
+			<button class="pen-button rainbow" onclick="setPenColor('rainbow')">rainbow</button>
+			<button class="pen-button warm" onclick="setPenColor('warm')">warm</button>
+			<button class="pen-button cool" onclick="setPenColor('cool')">cool</button>
+			<button class="pen-button eraser" onclick="setPenColor('eraser')">eraser</button>
+		</div>
 
-        <div class="gridSize">
-            <button onclick="buildGrid(8,8)">8x8</button>
-            <button onclick="buildGrid(16,16)">16x16</button>
-            <button onclick="buildGrid(32,32)">32x32</button>
-        </div>
+		<div id="grid"></div>
 
-        <footer>
-            <p>Copyright ©
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-                <a href="https://github.com/OkiDokiTokiLoki/doodle-sketch" target="blank">OkiDokiTokiLoki</a>
-            </p>
-        </footer>
-    </body>
+		<div class="gridSize">
+			<button onclick="buildGrid(8,8)">8x8</button>
+			<button onclick="buildGrid(16,16)">16x16</button>
+			<button onclick="buildGrid(32,32)">32x32</button>
+		</div>
+
+		<footer>
+			<p>
+				©
+				<span id="yearSpan">
+					<script>
+						document.querySelector("#yearSpan").textContent = new Date().getFullYear();
+					</script>
+				</span>
+				<a href="https://github.com/OkiDokiTokiLoki/doodle-sketch">OkiDokiTokiLoki</a>
+			</p>
+		</footer>
+	</body>
 </html>

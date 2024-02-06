@@ -4,11 +4,9 @@
 
 ## General info
 A take on the classic "Etch-A-Sketch". Create pixel art with the click (or drag) of a mouse. Choose from various grid sizes as well as an array of color palettes.
-	
-## Technologies
-Utilizing vanilla front end technology and manipulating DOM elements in the browser to create a simple drawing tool. 
 
-Project is created with:
+## Technologies
+Created with:
 * HTML
 * CSS
-* JavaScript
+* TypeScript
