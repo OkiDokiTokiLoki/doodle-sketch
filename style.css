@@ -10,10 +10,10 @@
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
-    --dark: hsl(206, 74%, 6%);
+    --dark: hsl(202, 85%, 8%);
     --light: hsl(208, 100%, 97%);
-    --yellow: hsl(41, 100%, 64%);
-    --pink: hsl(346, 85%, 62%);
+    --yellow: hsl(39, 100%, 64%);
+    --pink: hsl(330, 88%, 55%);
     --gradient: linear-gradient(to right, var(--yellow) 0%, var(--yellow)  100%);
 }
 
